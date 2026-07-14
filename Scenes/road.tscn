@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://caa1vegq55ukh"]
 
-[ext_resource type="Texture2D" uid="uid://cvvnx3uu8tyhd" path="res://textures/newroad.png" id="1_s5bdx"]
+[ext_resource type="Texture2D" uid="uid://br8mn4r38dgn2" path="res://textures/road.png" id="1_s5bdx"]
 
 [node name="Road" type="Parallax2D"]
-repeat_size = Vector2(1152, 0)
+repeat_size = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(4, 4.475309)
+scale = Vector2(6.667, 6.667)
 texture = ExtResource("1_s5bdx")
 centered = false

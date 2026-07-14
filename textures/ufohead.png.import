@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kj7twe1pw8x8"
-path="res://.godot/imported/tankbody1.png-181c8b7e192ae17d28261286184df614.ctex"
+uid="uid://dyo1p70y6m8ti"
+path="res://.godot/imported/ufohead.png-b84e5ace89ebc0ddedd250de1d5ca8f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/tankbody1.png"
-dest_files=["res://.godot/imported/tankbody1.png-181c8b7e192ae17d28261286184df614.ctex"]
+source_file="res://textures/ufohead.png"
+dest_files=["res://.godot/imported/ufohead.png-b84e5ace89ebc0ddedd250de1d5ca8f0.ctex"]
 
 [params]
 

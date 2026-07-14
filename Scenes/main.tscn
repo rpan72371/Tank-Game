@@ -16,24 +16,26 @@ font_size = 30
 script = ExtResource("1_kry3j")
 
 [node name="Road" parent="." instance=ExtResource("1_bo1nx")]
+scroll_offset = Vector2(1, 0)
 
 [node name="Tank" parent="." groups=["player"] instance=ExtResource("2_8gbba")]
-position = Vector2(329, 331)
+position = Vector2(345, 558)
 motion_mode = 1
 
 [node name="CameraFollower" parent="." instance=ExtResource("4_jjvhh")]
-position = Vector2(577, 322)
+position = Vector2(961, 487)
 
 [node name="Camera2D" type="Camera2D" parent="CameraFollower"]
+position = Vector2(0, 53)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("6_6bp64")
 
 [node name="Score" type="Label" parent="HUD"]
-offset_left = 837.0
-offset_top = 14.0
-offset_right = 1119.0
-offset_bottom = 86.0
+offset_left = 1590.0
+offset_top = 19.0
+offset_right = 1872.0
+offset_bottom = 91.0
 label_settings = SubResource("LabelSettings_ynf5e")
 
 [node name="HealthContainer" type="HBoxContainer" parent="HUD"]

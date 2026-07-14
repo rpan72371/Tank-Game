@@ -1,6 +1,6 @@
-extends AnimatedSprite2D
+extends Sprite2D
 
-const ROTATION = 10.0
+const ROTATION = 8.0
 const FIRERATE = 0.4
 
 var bullet_path=preload("res://Scenes/bullet.tscn")

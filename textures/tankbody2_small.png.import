@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7fk5euivpgmb"
-path="res://.godot/imported/footsoldier.png-2521fdfbfcd97d747e29029ac2a88636.ctex"
+uid="uid://d0pyv54bjgh7k"
+path="res://.godot/imported/tankbody2_small.png-c0dfddfebea50b3f59138c5d07b05cb9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/footsoldier.png"
-dest_files=["res://.godot/imported/footsoldier.png-2521fdfbfcd97d747e29029ac2a88636.ctex"]
+source_file="res://textures/tankbody2_small.png"
+dest_files=["res://.godot/imported/tankbody2_small.png-c0dfddfebea50b3f59138c5d07b05cb9.ctex"]
 
 [params]
 

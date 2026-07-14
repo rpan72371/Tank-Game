@@ -1,5 +1,5 @@
 extends CharacterBody2D
-const speed = -500
+const speed = -800
 
 var iframe = false
 

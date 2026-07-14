@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 const BODY_ROTATION = 20
-const SIDESPEED = 210.0
-@export var min_y = 160.0
-@export var max_y = 480.0
+const SIDESPEED = 310.0
+@export var min_y = 162.0
+@export var max_y = 864.0
 
 func _ready():
 	$pickup.add_to_group("pickup")

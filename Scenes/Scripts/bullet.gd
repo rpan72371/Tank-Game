@@ -1,5 +1,5 @@
 extends CharacterBody2D
-const speed = 1200
+const speed = 1700
 
 var pos: Vector2
 var rota: float 

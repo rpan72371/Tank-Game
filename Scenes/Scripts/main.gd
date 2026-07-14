@@ -15,9 +15,9 @@ var enemies: Array = []
 
 var enemy_interval: float = 4.0 # seconds between enemies
 var obs_interval: float = 2.0   # seconds between rocks
-var min_y = 160.0           # top of play area
-var max_y = 450.0          # bottom of play area
-var spawn_x = 1200.0       # where rocks first appear (off right edge)
+var min_y = 216.0           # top of play area
+var max_y = 864.0          # bottom of play area
+var spawn_x = 1970.0       # where rocks first appear (off right edge)
 
 var frame_counter = 0
 var time_since_obs = 0.0
@@ -51,7 +51,7 @@ func _process(delta):
 			time_since_enemy = 0.0
 			if scroll_x <= 30000:
 				next_enemy = enemy_interval - floor(scroll_x/5000)/5
-			if !(rng < 4):
+			if rng > 7:
 				generate_enemy()
 
 	if not GameState.is_alive and not reset_pending: # trigger reset flag
@@ -77,7 +77,7 @@ func check_offscreen():
 				obstacles[0].queue_free()
 				obstacles.pop_front()
 				continue
-			if obstacles[0].global_position.x < $CameraFollower.position.x - 700:
+			if obstacles[0].global_position.x < $CameraFollower.position.x - 1000:
 				obstacles[0].queue_free()
 				obstacles.pop_front()
 				continue
@@ -86,7 +86,7 @@ func check_offscreen():
 			if not is_instance_valid(enemies[0]):
 				enemies.pop_front()
 				continue
-			if enemies[0].global_position.x > $CameraFollower.position.x + 700:
+			if enemies[0].global_position.x > $CameraFollower.position.x + 1000:
 				enemies[0].queue_free()
 				enemies.pop_front()
 				continue

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7fk5euivpgmb"
-path="res://.godot/imported/alien.png-0a7f80b36802ec109fc6fbf7fd87d09e.ctex"
+uid="uid://br8mn4r38dgn2"
+path="res://.godot/imported/road.png-9fdaa7b8a7a63442ac8d2fa2e2df8eb6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/alien.png"
-dest_files=["res://.godot/imported/alien.png-0a7f80b36802ec109fc6fbf7fd87d09e.ctex"]
+source_file="res://textures/road.png"
+dest_files=["res://.godot/imported/road.png-9fdaa7b8a7a63442ac8d2fa2e2df8eb6.ctex"]
 
 [params]
 

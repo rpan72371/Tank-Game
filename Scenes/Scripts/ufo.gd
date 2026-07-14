@@ -20,8 +20,8 @@ func _physics_process(delta: float) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	uptime += 1
-	vert = 150*sin(floor(uptime/50)) * GameState.grv/200
+	uptime += delta
+	vert = 350*sin(uptime*2.5) * GameState.grv/200
 
 func _on_hitbox_entered(body):
 	if body.is_in_group("bullet") && !hit:

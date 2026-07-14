@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://i67eu8chqgq8"]
+
+[ext_resource type="PackedScene" uid="uid://caa1vegq55ukh" path="res://Scenes/road.tscn" id="1_bo1nx"]
+[ext_resource type="Script" uid="uid://b871t37kmnymb" path="res://Scenes/main.gd" id="1_kry3j"]
+[ext_resource type="PackedScene" uid="uid://dmhmdsgvl0h4m" path="res://Scenes/tank.tscn" id="2_8gbba"]
+[ext_resource type="Script" uid="uid://xilx7dohdchi" path="res://Scenes/tankemovement.gd" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://26k3peysru6n" path="res://Scenes/camera.tscn" id="4_jjvhh"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_kry3j")
+spawn_interval = null
+min_y = null
+max_y = null
+spawn_x = null
+
+[node name="Road" parent="." instance=ExtResource("1_bo1nx")]
+
+[node name="Tank" parent="." instance=ExtResource("2_8gbba")]
+position = Vector2(329, 331)
+motion_mode = 1
+script = ExtResource("3_8gbba")
+
+[node name="CameraFollower" parent="." instance=ExtResource("4_jjvhh")]
+position = Vector2(577, 322)
+
+[node name="Camera2D" type="Camera2D" parent="CameraFollower"]

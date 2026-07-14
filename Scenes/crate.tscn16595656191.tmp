@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cc6rxrkyeky2j"]
+
+[ext_resource type="Script" uid="uid://u0nqpfdk6xue" path="res://Scenes/Scripts/crate.gd" id="1_i4r3v"]
+[ext_resource type="Texture2D" uid="uid://cs3urubtr8alc" path="res://textures/diamond.png" id="2_l7th0"]
+[ext_resource type="Texture2D" uid="uid://d0nkcr42xhgt7" path="res://textures/crate.png" id="2_rdp7h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mo0jf"]
+size = Vector2(100, 101)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rdp7h"]
+radius = 41.0
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_i4r3v")
+
+[node name="diamond" type="Sprite2D" parent="."]
+texture = ExtResource("2_l7th0")
+
+[node name="crate" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_rdp7h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_mo0jf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rdp7h")

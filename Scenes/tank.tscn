@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://dmhmdsgvl0h4m"]
+
+[ext_resource type="Texture2D" uid="uid://kj7twe1pw8x8" path="res://textures/tankbody1.png" id="1_42q8f"]
+[ext_resource type="Script" uid="uid://xilx7dohdchi" path="res://Scenes/Scripts/tankemovement.gd" id="1_vjxkb"]
+[ext_resource type="Texture2D" uid="uid://c0mhbwmibtwo1" path="res://textures/tankbody2.png" id="2_2nc7w"]
+[ext_resource type="Script" uid="uid://d2p1sa6caoo8i" path="res://Scenes/Scripts/body.gd" id="3_2nc7w"]
+[ext_resource type="Script" uid="uid://bvqqws2edybel" path="res://Scenes/Scripts/head.gd" id="3_7f80w"]
+[ext_resource type="Texture2D" uid="uid://cyl8m7ubimkef" path="res://textures/newtankhead.png" id="3_42q8f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vjxkb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_42q8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2nc7w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7f80w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_42q8f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_42q8f"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vjxkb"]
+radius = 48.259712
+
+[node name="Tank" type="CharacterBody2D"]
+script = ExtResource("1_vjxkb")
+
+[node name="Body" type="AnimatedSprite2D" parent="."]
+position = Vector2(4.7683716e-07, 0)
+scale = Vector2(2.425, 2.0500002)
+sprite_frames = SubResource("SpriteFrames_vjxkb")
+frame_progress = 0.4486051
+speed_scale = 2.0
+script = ExtResource("3_2nc7w")
+
+[node name="Head" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1.1920929e-07)
+scale = Vector2(1.9725, 2.0425)
+sprite_frames = SubResource("SpriteFrames_7f80w")
+script = ExtResource("3_7f80w")
+
+[node name="Node2D" type="Node2D" parent="Head"]
+position = Vector2(25.348541, 5.8364403e-08)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_42q8f")
+
+[node name="pickup" type="Area2D" parent="."]
+
+[node name="pickuprange" type="CollisionShape2D" parent="pickup"]
+shape = SubResource("CircleShape2D_vjxkb")

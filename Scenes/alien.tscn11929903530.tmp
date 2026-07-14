@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn88eqthl4s0k"]
+
+[ext_resource type="Script" uid="uid://b5xfulk3p60di" path="res://Scenes/Scripts/alien.gd" id="1_fhrgm"]
+[ext_resource type="Texture2D" uid="uid://cv6djn60yt8hb" path="res://textures/footsoldier.png" id="2_26noy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wk2vo"]
+radius = 16.03122
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_fhrgm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -2)
+shape = SubResource("CircleShape2D_wk2vo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_26noy")
+
+[node name="Node2D" type="Node2D" parent="Sprite2D"]
+position = Vector2(-34, -3)

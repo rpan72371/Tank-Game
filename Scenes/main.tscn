@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://i67eu8chqgq8"]
+
+[ext_resource type="PackedScene" uid="uid://caa1vegq55ukh" path="res://Scenes/road.tscn" id="1_bo1nx"]
+[ext_resource type="Script" uid="uid://b871t37kmnymb" path="res://Scenes/Scripts/main.gd" id="1_kry3j"]
+[ext_resource type="PackedScene" uid="uid://dmhmdsgvl0h4m" path="res://Scenes/tank.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://26k3peysru6n" path="res://Scenes/camera.tscn" id="4_jjvhh"]
+[ext_resource type="Script" uid="uid://ibj5mit4cbrf" path="res://Scenes/Scripts/hud.gd" id="6_6bp64"]
+[ext_resource type="Texture2D" uid="uid://bm7effibn8mf5" path="res://textures/life.png" id="6_21xkr"]
+[ext_resource type="FontFile" uid="uid://bivtx638tkxvw" path="res://textures/Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/connection_ii/ConnectionII.otf" id="7_344ge"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ynf5e"]
+font = ExtResource("7_344ge")
+font_size = 30
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_kry3j")
+
+[node name="Road" parent="." instance=ExtResource("1_bo1nx")]
+
+[node name="Tank" parent="." groups=["player"] instance=ExtResource("2_8gbba")]
+position = Vector2(329, 331)
+motion_mode = 1
+
+[node name="CameraFollower" parent="." instance=ExtResource("4_jjvhh")]
+position = Vector2(577, 322)
+
+[node name="Camera2D" type="Camera2D" parent="CameraFollower"]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("6_6bp64")
+
+[node name="Score" type="Label" parent="HUD"]
+offset_left = 837.0
+offset_top = 14.0
+offset_right = 1119.0
+offset_bottom = 86.0
+label_settings = SubResource("LabelSettings_ynf5e")
+
+[node name="HealthContainer" type="HBoxContainer" parent="HUD"]
+offset_left = 32.0
+offset_top = 20.0
+offset_right = 230.0
+offset_bottom = 71.0
+
+[node name="Heart1" type="TextureRect" parent="HUD/HealthContainer"]
+layout_mode = 2
+texture = ExtResource("6_21xkr")
+expand_mode = 3
+
+[node name="Heart2" type="TextureRect" parent="HUD/HealthContainer"]
+layout_mode = 2
+texture = ExtResource("6_21xkr")
+expand_mode = 3
+
+[node name="Heart3" type="TextureRect" parent="HUD/HealthContainer"]
+layout_mode = 2
+texture = ExtResource("6_21xkr")
+expand_mode = 3

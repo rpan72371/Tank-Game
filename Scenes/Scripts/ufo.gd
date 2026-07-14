@@ -1,0 +1,41 @@
+extends CharacterBody2D
+
+var uptime = 0.0
+var hit = false
+var iframe = false
+var vert = 0
+	
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$Area2D2.body_entered.connect(_on_hitbox_entered)
+	$Area2D.body_entered.connect(_on_hurtbox_entered)
+	z_index = 10
+	
+func _physics_process(delta: float) -> void:
+	velocity.x = GameState.grv * 1.75
+
+
+	velocity.y = vert
+	move_and_slide()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	uptime += 1
+	vert = 150*sin(floor(uptime/50)) * GameState.grv/200
+
+func _on_hitbox_entered(body):
+	if body.is_in_group("bullet") && !hit:
+		body.queue_free()      # destroy the bullet
+		hit = true
+		$Sprite2D.visible = false
+		$Sprite2D2.visible = false
+		GameState.score += 100
+
+func _on_hurtbox_entered(body):
+	if body.is_in_group("player") && !iframe && !hit:
+		iframe = true
+		GameState.hp -= 1
+		get_tree().create_timer(GameState.global_iframes).timeout.connect(end_iframe)
+		
+func end_iframe():
+	iframe = false

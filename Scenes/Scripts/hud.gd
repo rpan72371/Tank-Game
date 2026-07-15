@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var hearts = [$HealthContainer/Heart1, $HealthContainer/Heart2, $HealthContainer/Heart3]
 @onready var score_label = $Score
+@onready var highscore_label = $Highscore
 
 func _process(delta):
 	# hearts: show one per remaining HP

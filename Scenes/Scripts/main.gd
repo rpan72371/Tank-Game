@@ -33,7 +33,7 @@ func _ready():
 	
 func _process(delta):
 	if GameState.is_alive: 
-		scroll_x += 200 * delta
+		scroll_x += GameState.initial_velocity * delta
 		var rng = randi_range(1, 10)
 		time_since_obs += delta 
 		time_since_enemy += delta
@@ -98,7 +98,7 @@ func generate_obs(spawn_two):
 		spawn_obstacle_at(y)
 	else:
 		var mid = (min_y + max_y) / 2
-		var gap = 60.0        # minimum separation buffer
+		var gap = 55.0        # minimum separation buffer
 		var y1 = randf_range(min_y, mid - gap / 2)
 		var y2 = randf_range(mid + gap / 2, max_y)
 		spawn_obstacle_at(y1)
@@ -117,7 +117,7 @@ func spawn_obstacle_at(y: float):
 
 func generate_enemy():
 	var enemy = ufo_scene.instantiate()
-	var spawn_y = randf_range(min_y, max_y)
+	var spawn_y = randf_range(min_y + 400, max_y - 400)
 	enemy.global_position = Vector2(scroll_x - spawn_x, spawn_y)
 	add_child(enemy)
 	enemies.append(enemy)
@@ -128,10 +128,15 @@ func reset_game():
 	scroll_x = 0.0
 	time_since_obs = 0.0
 	
-	for rock in obstacles:
-		if is_instance_valid(rock):
-			rock.queue_free()
+	for obs in obstacles:
+		if is_instance_valid(obs):
+			obs.queue_free()
 	obstacles.clear()
+	
+	for enemy in enemies:
+		if is_instance_valid(enemy):
+			enemy.queue_free()
+	enemies.clear()
 	
 	GameState.score = 0
 	GameState.hp = 3

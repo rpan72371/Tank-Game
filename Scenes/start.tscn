@@ -1,19 +1,58 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0a1ijdw5us6h"]
+[gd_scene load_steps=8 format=3 uid="uid://c0a1ijdw5us6h"]
 
-[ext_resource type="Texture2D" uid="uid://duewwiler2v0l" path="res://textures/restart.png" id="1_3bxa3"]
 [ext_resource type="Script" uid="uid://dpdsrnfpiglmc" path="res://Scenes/Scripts/start.gd" id="1_r48yj"]
+[ext_resource type="Texture2D" uid="uid://ck5v8ja4hc4he" path="res://textures/button.png" id="2_r48yj"]
+[ext_resource type="FontFile" uid="uid://bivtx638tkxvw" path="res://textures/Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/connection_ii/ConnectionII.otf" id="3_5ogh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r48yj"]
 size = Vector2(94, 42)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lb6bl"]
+font = ExtResource("3_5ogh5")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ogh5"]
+font = ExtResource("3_5ogh5")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_rk01k"]
+font = ExtResource("3_5ogh5")
+font_size = 20
 
 [node name="Area2D" type="Area2D"]
 scale = Vector2(2, 2)
 collision_mask = 65
 script = ExtResource("1_r48yj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_3bxa3")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
 shape = SubResource("RectangleShape2D_r48yj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4.7, 4)
+texture = ExtResource("2_r48yj")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -27.5
+offset_top = -10.0
+offset_right = 12.5
+offset_bottom = 13.0
+label_settings = SubResource("LabelSettings_lb6bl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -36.0
+offset_top = -10.0
+offset_right = 4.0
+offset_bottom = 13.0
+label_settings = SubResource("LabelSettings_5ogh5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -80.0
+offset_top = -50.5
+offset_right = -40.0
+offset_bottom = -27.5
+label_settings = SubResource("LabelSettings_rk01k")

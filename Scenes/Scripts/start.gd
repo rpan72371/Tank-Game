@@ -2,10 +2,11 @@ extends Area2D
 
 func _ready():
 	if GameState.first_game:
-		$Sprite2D.texture = load("res://textures/start.png")
+		$Label.text = "START"
 		GameState.first_game = false
 	else:
-		$Sprite2D.texture = load("res://textures/restart.png")
+		$Label2.text = "Restart"
+	$Label3.text = "HIGHSCORE:%06d" % GameState.high_score
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body):

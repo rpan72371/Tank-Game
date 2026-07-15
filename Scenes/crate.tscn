@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://u0nqpfdk6xue" path="res://Scenes/Scripts/crate.gd" id="1_i4r3v"]
 [ext_resource type="Script" uid="uid://c4v8bx330u7p5" path="res://Scenes/Scripts/diamond.gd" id="2_sh37k"]
-[ext_resource type="Texture2D" uid="uid://uo44x42uplsv" path="res://textures/newcrate.png" id="3_rdp7h"]
+[ext_resource type="Texture2D" uid="uid://2ci40rs7njp6" path="res://textures/crate_small.png" id="3_rdp7h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mo0jf"]
 size = Vector2(86, 86)
@@ -15,6 +15,7 @@ collision_mask = 65
 script = ExtResource("1_i4r3v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.9, 1.9)
 shape = SubResource("RectangleShape2D_mo0jf")
 
 [node name="powerup" type="Area2D" parent="."]
@@ -26,6 +27,5 @@ shape = SubResource("CircleShape2D_rdp7h")
 [node name="poweruppng" type="Sprite2D" parent="powerup"]
 
 [node name="crate" type="Sprite2D" parent="."]
-position = Vector2(-2.3841858e-07, 0)
-scale = Vector2(1.7299999, 1.74)
+scale = Vector2(6.667, 6.667)
 texture = ExtResource("3_rdp7h")

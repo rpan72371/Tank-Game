@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5dn4kc1hddxo"
-path="res://.godot/imported/alien.png-0a7f80b36802ec109fc6fbf7fd87d09e.ctex"
+uid="uid://2ci40rs7njp6"
+path="res://.godot/imported/crate_small.png-7af3843e3e3e7dbd952d35b7f6ff3551.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/alien.png"
-dest_files=["res://.godot/imported/alien.png-0a7f80b36802ec109fc6fbf7fd87d09e.ctex"]
+source_file="res://textures/crate_small.png"
+dest_files=["res://.godot/imported/crate_small.png-7af3843e3e3e7dbd952d35b7f6ff3551.ctex"]
 
 [params]
 

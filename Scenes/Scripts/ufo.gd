@@ -27,8 +27,8 @@ func _on_hitbox_entered(body):
 	if body.is_in_group("bullet") && !hit:
 		body.queue_free()      # destroy the bullet
 		hit = true
-		$Sprite2D.visible = false
-		$Sprite2D2.visible = false
+		$ufohead.visible = false
+		$ufobody.visible = false
 		GameState.score += 100
 
 func _on_hurtbox_entered(body):

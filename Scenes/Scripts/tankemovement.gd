@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const BODY_ROTATION = 20
-const SIDESPEED = 310.0
+const SIDESPEED = 350.0
 @export var min_y = 162.0
 @export var max_y = 864.0
 

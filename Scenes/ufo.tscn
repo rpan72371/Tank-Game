@@ -1,26 +1,29 @@
 [gd_scene load_steps=7 format=3 uid="uid://vwbkvbvuwoc0"]
 
 [ext_resource type="Texture2D" uid="uid://dyo1p70y6m8ti" path="res://textures/ufohead.png" id="1_fhrgm"]
-[ext_resource type="Texture2D" uid="uid://d3p5egvluppx" path="res://textures/ufobase.png" id="1_mdm8w"]
 [ext_resource type="Script" uid="uid://cowke0x2g7t6o" path="res://Scenes/Scripts/ufo.gd" id="1_s84hg"]
 [ext_resource type="Script" uid="uid://du4fc5a4duwh3" path="res://Scenes/Scripts/ufobody.gd" id="2_26noy"]
+[ext_resource type="Texture2D" uid="uid://dk62aq4orfd33" path="res://textures/ufobody.png" id="2_ppr3x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mdm8w"]
-radius = 24.020824
+radius = 49.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fhrgm"]
-radius = 37.01351
+radius = 61.0
 
 [node name="alien" type="CharacterBody2D"]
 collision_mask = 65
 script = ExtResource("1_s84hg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_mdm8w")
-script = ExtResource("2_26noy")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="ufohead" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(6.667, 6.667)
 texture = ExtResource("1_fhrgm")
+
+[node name="ufobody" type="Sprite2D" parent="."]
+scale = Vector2(6.667, 6.667)
+texture = ExtResource("2_ppr3x")
+script = ExtResource("2_26noy")
 
 [node name="Area2D" type="Area2D" parent="."]
 

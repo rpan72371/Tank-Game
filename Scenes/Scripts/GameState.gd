@@ -1,6 +1,6 @@
 extends Node
 
-var grv = 1300.0 #global relative velocity
+var grv = 2000.0 #global relative velocity
 var first_game = true
 var is_alive = false
 

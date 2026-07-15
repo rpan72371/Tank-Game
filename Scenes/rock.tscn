@@ -4,13 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://doxvwpf1ae2xx" path="res://textures/rock.png" id="1_lgx4v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5mkji"]
-radius = 43.046486
+radius = 69.0
 
 [node name="rock" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_5mkji")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6.666, 6.666)
 texture = ExtResource("1_lgx4v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

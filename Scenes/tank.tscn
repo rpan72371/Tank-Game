@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://xilx7dohdchi" path="res://Scenes/Scripts/tankemovement.gd" id="1_vjxkb"]
 [ext_resource type="Texture2D" uid="uid://cl05efsb2jjsc" path="res://textures/tankhead_small.png" id="2_6c1wy"]
-[ext_resource type="Script" uid="uid://d2p1sa6caoo8i" path="res://Scenes/scripts/body.gd" id="2_42q8f"]
+[ext_resource type="Script" uid="uid://d2p1sa6caoo8i" path="res://Scenes/Scripts/body.gd" id="2_42q8f"]
 [ext_resource type="Texture2D" uid="uid://clmrji623gw5n" path="res://textures/tankbody1_small.png" id="2_vjxkb"]
 [ext_resource type="Texture2D" uid="uid://d0pyv54bjgh7k" path="res://textures/tankbody2_small.png" id="3_6c1wy"]
 [ext_resource type="Script" uid="uid://bvqqws2edybel" path="res://Scenes/Scripts/head.gd" id="3_7f80w"]
@@ -42,7 +42,7 @@ script = ExtResource("3_7f80w")
 scale = Vector2(6.667, 6.667)
 sprite_frames = SubResource("SpriteFrames_iirto")
 frame_progress = 0.36626774
-speed_scale = 2.0
+speed_scale = 1.4
 script = ExtResource("2_42q8f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

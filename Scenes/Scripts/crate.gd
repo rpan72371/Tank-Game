@@ -15,11 +15,12 @@ func _ready():
 	$CollisionShape2D.rotation = rot
 	
 func _on_body_entered(body):
-	if body.is_in_group("player") && !hit:
-		GameState.hp -= 1 # decrement health
+	if body.is_in_group("player") && !hit && !GameState.iframe:
+		GameState.take_damage()
 		$powerup._toggle_visiblity()
 		$crate.visible = false
 		hit = true 
+
 func _on_shot(body):
 	if body.is_in_group("bullet") && !hit:
 		if !(rng >= 24):

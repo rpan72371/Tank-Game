@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 var uptime = 0.0
 var hit = false
-var iframe = false
 var vert = 0
 var rng = randi_range(0,1) 
 # Called when the node enters the scene tree for the first time.
@@ -37,10 +36,5 @@ func _on_hitbox_entered(body):
 		$fall.play()
 		
 func _on_hurtbox_entered(body):
-	if body.is_in_group("player") && !iframe && !hit:
-		iframe = true
-		GameState.hp -= 1
-		get_tree().create_timer(GameState.global_iframes).timeout.connect(end_iframe)
-		
-func end_iframe():
-	iframe = false
+	if body.is_in_group("player") && !GameState.iframe && !hit:
+		GameState.take_damage()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmhmdsgvl0h4m"]
+[gd_scene load_steps=11 format=3 uid="uid://dmhmdsgvl0h4m"]
 
 [ext_resource type="Script" uid="uid://xilx7dohdchi" path="res://Scenes/Scripts/tankemovement.gd" id="1_vjxkb"]
 [ext_resource type="Texture2D" uid="uid://cl05efsb2jjsc" path="res://textures/tankhead_small.png" id="2_6c1wy"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://d0pyv54bjgh7k" path="res://textures/tankbody2_small.png" id="3_6c1wy"]
 [ext_resource type="Script" uid="uid://bvqqws2edybel" path="res://Scenes/Scripts/head.gd" id="3_7f80w"]
 [ext_resource type="AudioStream" uid="uid://cvjmg5bfyd2c8" path="res://Audio/gun.wav" id="4_6c1wy"]
-[ext_resource type="AudioStream" uid="uid://cmru0xsuu7tbo" path="res://Audio/damage.ogg" id="8_iirto"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iirto"]
 animations = [{
@@ -61,7 +60,3 @@ shape = SubResource("CircleShape2D_42q8f")
 
 [node name="pickuprange" type="CollisionShape2D" parent="pickup"]
 shape = SubResource("CircleShape2D_vjxkb")
-
-[node name="damage" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_iirto")
-volume_db = 5.0

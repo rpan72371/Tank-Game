@@ -11,7 +11,7 @@ func _ready():
 	body_entered.connect(_on_body_entered)
 	body_entered.connect(_on_shot)
 
-func _process(delta):
+func _process(_delta):
 		if can_fire && !hit && GameState.is_alive:
 			fire()
 
@@ -19,7 +19,7 @@ func _on_body_entered(body):
 	if body.is_in_group("player") && !hit:
 		visible = false
 		hit = true 
-		GameState.score += 100
+		GameState.score += 200
 		$hit.play()
 		if rng == 2:
 			$scream.play()

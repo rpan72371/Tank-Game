@@ -6,11 +6,12 @@ var grv = 0
 var first_game = true
 var is_alive = false
 var reset = false
-var global_iframes = 0.5
+var global_iframes = 0.75
 var hp = 3
 var score = 0
 var high_score = 0
 var can_score = false
+var iframe = false
 
 var status = true
 
@@ -43,7 +44,9 @@ func end_run():
 		save_data()
 
 func take_damage():
-	pass
+	iframe = true
+	hp -= 1
+	get_tree().create_timer(global_iframes).timeout.connect(func(): iframe = false)
 	
 func save_data():
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)

@@ -51,7 +51,7 @@ func _process(delta):
 			time_since_enemy = 0.0
 			if scroll_x <= 30000:
 				next_enemy = enemy_interval - floor(scroll_x/5000)/5
-			if rng > 7:
+			if rng > 8:
 				generate_enemy()
 
 	if not GameState.is_alive and not reset_pending: # trigger reset flag
@@ -109,7 +109,7 @@ func spawn_obstacle_at(y: float):
 	var obs = crate_scene.instantiate()
 	if rng <= 3: 
 		obs = rock_scene.instantiate()
-	elif rng >= 8:
+	elif rng >= 9:
 		obs = alien_scene.instantiate()
 	obs.global_position = Vector2(scroll_x + spawn_x, y)
 	add_child(obs)

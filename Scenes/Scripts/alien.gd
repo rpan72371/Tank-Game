@@ -5,6 +5,7 @@ const FIRERATE = 1.3
 var can_fire = true
 var hit = false
 var laser_scene = preload("res://Scenes/laser.tscn")
+var rng = randi_range(1,50)
 
 func _ready():
 	body_entered.connect(_on_body_entered)
@@ -19,6 +20,9 @@ func _on_body_entered(body):
 		visible = false
 		hit = true 
 		GameState.score += 100
+		$hit.play()
+		if rng == 50:
+			$scream.play()
 
 func _on_shot(body):
 	if body.is_in_group("bullet") && !hit:
@@ -26,6 +30,7 @@ func _on_shot(body):
 		hit = true
 		GameState.score += 100
 		body.queue_free()
+		$hit.play()
 
 func fire():
 	can_fire = false

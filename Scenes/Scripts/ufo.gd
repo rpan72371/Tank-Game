@@ -10,16 +10,15 @@ func _ready():
 	$Area2D2.body_entered.connect(_on_hitbox_entered)
 	$Area2D.body_entered.connect(_on_hurtbox_entered)
 	z_index = 10
+	$shipnoise.play()
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(delta):
 	velocity.x = GameState.grv * 1.75
-
-
 	velocity.y = vert
 	move_and_slide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(delta):
 	uptime += delta
 	if rng:
 		vert = 350*sin(uptime*2.5) * GameState.grv/GameState.initial_velocity
@@ -33,7 +32,10 @@ func _on_hitbox_entered(body):
 		$ufohead.visible = false
 		$ufobody.visible = false
 		GameState.score += 100
-
+		$shipnoise.stop()
+		$hit.play()
+		$fall.play()
+		
 func _on_hurtbox_entered(body):
 	if body.is_in_group("player") && !iframe && !hit:
 		iframe = true

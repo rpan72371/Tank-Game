@@ -1,12 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://vwbkvbvuwoc0"]
+[gd_scene load_steps=8 format=3 uid="uid://vwbkvbvuwoc0"]
 
 [ext_resource type="Texture2D" uid="uid://dyo1p70y6m8ti" path="res://textures/ufohead.png" id="1_fhrgm"]
 [ext_resource type="Script" uid="uid://cowke0x2g7t6o" path="res://Scenes/Scripts/ufo.gd" id="1_s84hg"]
 [ext_resource type="Script" uid="uid://du4fc5a4duwh3" path="res://Scenes/Scripts/ufobody.gd" id="2_26noy"]
 [ext_resource type="Texture2D" uid="uid://dk62aq4orfd33" path="res://textures/ufobody.png" id="2_ppr3x"]
 [ext_resource type="AudioStream" uid="uid://la6bhh83meln" path="res://Audio/ufo.mp3" id="5_l0lff"]
-[ext_resource type="AudioStream" uid="uid://c7efqjdqsu3h7" path="res://Audio/ufo fall.wav" id="6_c4byl"]
-[ext_resource type="AudioStream" uid="uid://dig14t6pp7y4t" path="res://Audio/hitmarker.mp3" id="7_qjalv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mdm8w"]
 radius = 49.0
@@ -43,11 +41,3 @@ shape = SubResource("CircleShape2D_fhrgm")
 stream = ExtResource("5_l0lff")
 volume_db = 4.0
 autoplay = true
-
-[node name="fall" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_c4byl")
-volume_db = 5.0
-
-[node name="hit" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_qjalv")
-volume_db = 3.0

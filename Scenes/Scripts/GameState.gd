@@ -1,5 +1,6 @@
+#file defines game state, dead/alive, scoring system, speed, start/end, and save/load functions
 extends Node
-const initial_velocity = 300
+const initial_velocity = 300 #this changes the speed of the game, could make it a variable to implement different difficulties
 const SAVE_PATH = "user://savedata.save"
 
 var grv = 0 # velocity

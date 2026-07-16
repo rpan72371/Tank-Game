@@ -4,7 +4,7 @@ var uptime = 0.0
 var hit = false
 var iframe = false
 var vert = 0
-	
+var rng = randi_range(0,1) 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Area2D2.body_entered.connect(_on_hitbox_entered)
@@ -21,7 +21,10 @@ func _physics_process(delta: float) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	uptime += delta
-	vert = 350*sin(uptime*2.5) * GameState.grv/200
+	if rng:
+		vert = 350*sin(uptime*2.5) * GameState.grv/GameState.initial_velocity
+	else:
+		vert = -350*sin(uptime*2.5) * GameState.grv/GameState.initial_velocity
 
 func _on_hitbox_entered(body):
 	if body.is_in_group("bullet") && !hit:

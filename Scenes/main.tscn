@@ -1,16 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://i67eu8chqgq8"]
+[gd_scene load_steps=10 format=3 uid="uid://i67eu8chqgq8"]
 
 [ext_resource type="PackedScene" uid="uid://caa1vegq55ukh" path="res://Scenes/road.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://b871t37kmnymb" path="res://Scenes/Scripts/main.gd" id="1_kry3j"]
 [ext_resource type="PackedScene" uid="uid://dmhmdsgvl0h4m" path="res://Scenes/tank.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://26k3peysru6n" path="res://Scenes/camera.tscn" id="4_jjvhh"]
+[ext_resource type="AudioStream" uid="uid://mkeb36ul3gd3" path="res://Audio/retroarcade - Moodmode.wav" id="5_344ge"]
 [ext_resource type="Script" uid="uid://ibj5mit4cbrf" path="res://Scenes/Scripts/hud.gd" id="6_6bp64"]
 [ext_resource type="Texture2D" uid="uid://bm7effibn8mf5" path="res://textures/life.png" id="6_21xkr"]
 [ext_resource type="FontFile" uid="uid://bivtx638tkxvw" path="res://textures/Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/connection_ii/ConnectionII.otf" id="7_344ge"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ynf5e"]
 font = ExtResource("7_344ge")
-font_size = 30
+font_size = 33
 shadow_size = 0
 shadow_color = Color(1, 1, 1, 0)
 
@@ -21,7 +22,7 @@ script = ExtResource("1_kry3j")
 scroll_offset = Vector2(1, 0)
 
 [node name="Tank" parent="." groups=["player"] instance=ExtResource("2_8gbba")]
-position = Vector2(345, 558)
+position = Vector2(374, 561)
 motion_mode = 1
 
 [node name="CameraFollower" parent="." instance=ExtResource("4_jjvhh")]
@@ -29,15 +30,20 @@ position = Vector2(960, 540)
 
 [node name="Camera2D" type="Camera2D" parent="CameraFollower"]
 
+[node name="BGM" type="AudioStreamPlayer2D" parent="CameraFollower"]
+position = Vector2(171.42871, -525.7143)
+stream = ExtResource("5_344ge")
+autoplay = true
+
 [node name="HUD" type="CanvasLayer" parent="."]
 scale = Vector2(1.4, 1.4)
 transform = Transform2D(1.4, 0, 0, 1.4, 0, 0)
 script = ExtResource("6_6bp64")
 
 [node name="Score" type="Label" parent="HUD"]
-offset_left = 1168.5715
+offset_left = 1131.4287
 offset_top = 14.285713
-offset_right = 1450.5714
+offset_right = 1413.4286
 offset_bottom = 86.28571
 label_settings = SubResource("LabelSettings_ynf5e")
 

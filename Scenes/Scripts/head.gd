@@ -1,7 +1,7 @@
 extends Sprite2D
 
 const ROTATION = 8.0
-const FIRERATE = 0.4
+const FIRERATE = 0.5
 
 var bullet_path=preload("res://Scenes/bullet.tscn")
 var can_fire = true;

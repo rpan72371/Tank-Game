@@ -9,8 +9,8 @@ func _toggle_visiblity():
 func use_powerup(type):
 	if type == 1:
 		$poweruppng.texture = diamond
-		$poweruppng.scale = Vector2(0.5, 0.5)
+		$poweruppng.scale = Vector2(6.66666, 6.66666)
 	else:
 		$poweruppng.texture = heart
-		$poweruppng.scale = Vector2(1.5,1.5)
+		$poweruppng.scale = Vector2(6.66666,6.66666)
 		

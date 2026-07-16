@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://mkeb36ul3gd3"
+path="res://.godot/imported/retroarcade - Moodmode.wav-347416370d4c90ca0aeee9e4c4ddd5cd.sample"
+
+[deps]
+
+source_file="res://Audio/retroarcade - Moodmode.wav"
+dest_files=["res://.godot/imported/retroarcade - Moodmode.wav-347416370d4c90ca0aeee9e4c4ddd5cd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

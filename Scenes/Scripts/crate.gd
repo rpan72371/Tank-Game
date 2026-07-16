@@ -7,10 +7,13 @@ var collected = false
 var rng = randi_range(1,25)
 
 func _ready():
+	var rot = deg_to_rad(randi_range(0,360))
 	body_entered.connect(_on_body_entered)
 	body_entered.connect(_on_shot)
 	$powerup.area_entered.connect(_on_powerup_collected)
-	$crate.rotation = deg_to_rad(randi_range(0,360))
+	$crate.rotation = rot
+	$CollisionShape2D.rotation = rot
+	
 	
 func _on_body_entered(body):
 	if body.is_in_group("player") && !hit:

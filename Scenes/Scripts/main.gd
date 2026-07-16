@@ -109,7 +109,7 @@ func spawn_obstacle_at(y: float):
 	var obs = crate_scene.instantiate()
 	if rng <= 3: 
 		obs = rock_scene.instantiate()
-	elif rng >= 9:
+	elif rng >= 8:
 		obs = alien_scene.instantiate()
 	obs.global_position = Vector2(scroll_x + spawn_x, y)
 	add_child(obs)

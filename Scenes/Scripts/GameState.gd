@@ -33,7 +33,7 @@ func _process(delta):
 #periodic point gains
 func _add_score():
 	can_score = false
-	score += 100
+	score += 100 #change this
 	get_tree().create_timer(2).timeout.connect(_on_score_timeout)
 
 #check whether play can score points

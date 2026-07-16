@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cc6rxrkyeky2j"]
+[gd_scene load_steps=9 format=3 uid="uid://cc6rxrkyeky2j"]
 
 [ext_resource type="Script" uid="uid://u0nqpfdk6xue" path="res://Scenes/Scripts/crate.gd" id="1_i4r3v"]
 [ext_resource type="Script" uid="uid://c4v8bx330u7p5" path="res://Scenes/Scripts/diamond.gd" id="2_sh37k"]
@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://c1ql24pogfr8n" path="res://Audio/powerup.wav" id="4_l7th0"]
 [ext_resource type="AudioStream" uid="uid://6spfnq4upuew" path="res://Audio/crate.wav" id="5_sh37k"]
 [ext_resource type="AudioStream" uid="uid://dig14t6pp7y4t" path="res://Audio/hitmarker.mp3" id="6_rv3de"]
-[ext_resource type="AudioStream" uid="uid://flt7g1aoju8s" path="res://Audio/wilhelm.wav" id="7_tjjwy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mo0jf"]
 size = Vector2(86, 86)
@@ -43,6 +42,3 @@ stream = ExtResource("5_sh37k")
 [node name="hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_rv3de")
 volume_db = 3.0
-
-[node name="scream" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_tjjwy")

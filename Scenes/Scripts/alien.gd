@@ -1,12 +1,11 @@
-#File defines the behaviour of the alien enemy
 extends Area2D
 
-const FIRERATE = 1.3 #defines alien firerate, could change value to implement difficulties
+const FIRERATE = 1.3
 
-var can_fire = true #ie, it's not dead
+var can_fire = true
 var hit = false
 var laser_scene = preload("res://Scenes/laser.tscn")
-var rng = randi_range(1,50) #chance variable
+var rng = randi_range(1,8)
 
 func _ready():
 	body_entered.connect(_on_body_entered)
@@ -22,8 +21,8 @@ func _on_body_entered(body):
 		hit = true 
 		GameState.score += 100
 		$hit.play()
-		if rng == 50:
-			$scream.play() #basically 1/50 chance to play scream sound upon death
+		if rng == 2:
+			$scream.play()
 
 func _on_shot(body):
 	if body.is_in_group("bullet") && !hit:

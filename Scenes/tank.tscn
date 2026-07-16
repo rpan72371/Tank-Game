@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmhmdsgvl0h4m"]
+[gd_scene load_steps=11 format=3 uid="uid://dmhmdsgvl0h4m"]
 
 [ext_resource type="Script" uid="uid://xilx7dohdchi" path="res://Scenes/Scripts/tankemovement.gd" id="1_vjxkb"]
 [ext_resource type="Texture2D" uid="uid://cl05efsb2jjsc" path="res://textures/tankhead_small.png" id="2_6c1wy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://clmrji623gw5n" path="res://textures/tankbody1_small.png" id="2_vjxkb"]
 [ext_resource type="Texture2D" uid="uid://d0pyv54bjgh7k" path="res://textures/tankbody2_small.png" id="3_6c1wy"]
 [ext_resource type="Script" uid="uid://bvqqws2edybel" path="res://Scenes/Scripts/head.gd" id="3_7f80w"]
+[ext_resource type="AudioStream" uid="uid://b0n22i21okxks" path="res://Audio/gun.mp3" id="4_6c1wy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iirto"]
 animations = [{
@@ -37,6 +38,10 @@ texture = ExtResource("2_6c1wy")
 script = ExtResource("3_7f80w")
 
 [node name="Node2D" type="Node2D" parent="Head"]
+
+[node name="gun" type="AudioStreamPlayer2D" parent="Head"]
+scale = Vector2(0.14999248, 0.14999248)
+stream = ExtResource("4_6c1wy")
 
 [node name="Body" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6.667, 6.667)

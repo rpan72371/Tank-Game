@@ -13,7 +13,7 @@ func _input(event):
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			rotation += deg_to_rad(ROTATION)
 			
-func _process(delta):
+func _process(_delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_fire:
 		fire()
 		can_fire = false
@@ -27,4 +27,5 @@ func fire():
 	bullet.dir=rotation
 	bullet.pos=$Node2D.global_position
 	bullet.rota=rotation
+	$gun.play()
 	get_tree().current_scene.add_child(bullet)

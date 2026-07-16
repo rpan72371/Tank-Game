@@ -2,7 +2,8 @@ extends Node
 const initial_velocity = 300
 const SAVE_PATH = "user://savedata.save"
 
-var grv = 0 -- velocity
+var grv = 0 
+# velocity
 var first_game = true
 var is_alive = false
 var reset = false

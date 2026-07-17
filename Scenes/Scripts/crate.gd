@@ -3,8 +3,10 @@ extends Area2D
 var hit = false
 var diamond = false
 var heart = false
+var shields = false
+var lasers = false
 var collected = false
-var rng = randi_range(1,25)
+var powerup = false
 
 func _ready():
 	var rot = deg_to_rad(randi_range(0,360))
@@ -23,34 +25,43 @@ func _on_body_entered(body):
 
 func _on_shot(body):
 	if body.is_in_group("bullet") && !hit:
-		if !(rng >= 24):
-			$crate.visible = false
-		else:
-			if int(randi_range(1,0)) % 2 == 0:
-				$crate.visible = false
-				$powerup.use_powerup(1)
-				diamond = true
-			else: 
-				$crate.visible = false
-				$powerup.use_powerup(2)
-				heart = true
+		$crate.visible = false
+		if true:#randi_range(1,25) >= 24:
+			powerup = true
+			match randi_range(1,4):
+				1:	
+					$powerup.use_powerup(1)
+					diamond = true
+				2:
+					$powerup.use_powerup(2)
+					heart = true
+				3:
+					$powerup.use_powerup(3)
+					shields = true
+				4:
+					$powerup.use_powerup(4)
+					lasers = true
 		$hit.play()
 		hit = true
 		GameState.score += 10
 		body.queue_free()
 
 func _on_powerup_collected(body):
-	if body.is_in_group("pickup") && hit && !collected:
+	if body.is_in_group("pickup") && hit && !collected && powerup:
 		if diamond:
 			GameState.score += 1000
-			$pickup.play()
 		elif heart:
 			if GameState.hp == 3:
 				GameState.score += 500
 			else: 
 				GameState.score += 200
 				GameState.hp += 1
-			$pickup.play()
+		elif shields:
+			GameState.shield_pickup = true
+			GameState.score += 200
+		elif lasers:
+			GameState.lasers_pickup = true
+			GameState.score += 200
 		collected = true
+		$pickup.play()
 		$powerup._toggle_visiblity()
-		

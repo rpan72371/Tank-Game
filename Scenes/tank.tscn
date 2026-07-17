@@ -44,7 +44,7 @@ script = ExtResource("3_7f80w")
 scale = Vector2(0.14999248, 0.14999248)
 stream = ExtResource("4_6c1wy")
 volume_db = 20.0
-pitch_scale = 1.2
+pitch_scale = 2.0
 
 [node name="Body" type="AnimatedSprite2D" parent="."]
 z_index = 2

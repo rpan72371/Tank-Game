@@ -2,6 +2,10 @@ extends Node
 const initial_velocity = 300
 const SAVE_PATH = "user://savedata.save"
 
+const shields_powerup = "res://Scenes/Scripts/shields.gd"
+const lasers_powerup = "res://Scenes/Scripts/lasers.gd"
+var held_powerup = null
+
 var grv = 0
 var first_game = true
 var is_alive = false
@@ -13,7 +17,11 @@ var high_score = 0
 var can_score = false
 var iframe = false
 
-var status = true
+var shield_active = false
+var lasers_active = false
+
+var shield_pickup = false
+var lasers_pickup = false
 
 func _ready():
 	load_data()
@@ -28,6 +36,14 @@ func _process(delta):
 	
 	if can_score and is_alive:
 		_add_score()
+	
+	if shield_pickup == true:
+		shield_pickup = false
+		held_powerup = shields_powerup
+	
+	if lasers_pickup == true:
+		lasers_pickup = false
+		held_powerup = lasers_powerup
 
 func _add_score():
 	can_score = false
@@ -44,9 +60,10 @@ func end_run():
 		save_data()
 
 func take_damage():
-	iframe = true
-	hp -= 1
-	get_tree().create_timer(global_iframes).timeout.connect(func(): iframe = false)
+	if !shield_active:
+		iframe = true
+		hp -= 1
+		get_tree().create_timer(global_iframes).timeout.connect(func(): iframe = false)
 	
 func save_data():
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -59,3 +76,14 @@ func load_data():
 		var data = file.get_var()
 		high_score = data.get("high_score", 0)
 		file.close()
+
+func use_powerup(holder: Node) -> void:
+	if held_powerup == null:
+		return
+
+	var powerup_script = load(held_powerup)
+	var powerup_instance = powerup_script.new()
+	holder.add_child(powerup_instance)
+	powerup_instance.activate()
+
+	held_powerup = null

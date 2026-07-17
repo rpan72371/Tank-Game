@@ -24,9 +24,9 @@ func _on_body_entered(body):
 		hit = true 
 
 func _on_shot(body):
-	if body.is_in_group("bullet") && !hit:
+	if ((body.is_in_group("bullet")) || (body.is_in_group("player") && GameState.shield_active)) && !hit:
 		$crate.visible = false
-		if true:#randi_range(1,25) >= 24:
+		if randi_range(1,25) >= 24:
 			powerup = true
 			match randi_range(1,4):
 				1:	
@@ -44,12 +44,13 @@ func _on_shot(body):
 		$hit.play()
 		hit = true
 		GameState.score += 10
-		body.queue_free()
+		if body.is_in_group("bullet"):
+			body.queue_free()
 
 func _on_powerup_collected(body):
 	if body.is_in_group("pickup") && hit && !collected && powerup:
 		if diamond:
-			GameState.score += 1000
+			GameState.score += 1500
 		elif heart:
 			if GameState.hp == 3:
 				GameState.score += 500

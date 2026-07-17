@@ -1,14 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmhmdsgvl0h4m"]
+[gd_scene load_steps=12 format=3 uid="uid://dmhmdsgvl0h4m"]
 
 [ext_resource type="Script" uid="uid://xilx7dohdchi" path="res://Scenes/Scripts/tankemovement.gd" id="1_vjxkb"]
 [ext_resource type="Texture2D" uid="uid://cl05efsb2jjsc" path="res://textures/tankhead_small.png" id="2_6c1wy"]
 [ext_resource type="Script" uid="uid://d2p1sa6caoo8i" path="res://Scenes/Scripts/body.gd" id="2_42q8f"]
-[ext_resource type="Texture2D" uid="uid://cpe24ypcndihw" path="res://textures/bubble.png" id="2_ntitd"]
 [ext_resource type="Texture2D" uid="uid://clmrji623gw5n" path="res://textures/tankbody1_small.png" id="2_vjxkb"]
 [ext_resource type="Texture2D" uid="uid://d0pyv54bjgh7k" path="res://textures/tankbody2_small.png" id="3_6c1wy"]
 [ext_resource type="Script" uid="uid://bvqqws2edybel" path="res://Scenes/Scripts/head.gd" id="3_7f80w"]
 [ext_resource type="AudioStream" uid="uid://cvjmg5bfyd2c8" path="res://Audio/gun.wav" id="4_6c1wy"]
-[ext_resource type="AudioStream" uid="uid://dh0ht60xpmq2d" path="res://Audio/laser.mp3" id="6_nayyn"]
 [ext_resource type="AudioStream" uid="uid://cmru0xsuu7tbo" path="res://Audio/damage.ogg" id="8_iirto"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iirto"]
@@ -34,13 +32,6 @@ radius = 125.016
 [node name="Tank" type="CharacterBody2D"]
 script = ExtResource("1_vjxkb")
 
-[node name="bubble" type="Sprite2D" parent="."]
-visible = false
-z_index = 4
-position = Vector2(7.6293945e-06, 0)
-scale = Vector2(6.667, 6.667)
-texture = ExtResource("2_ntitd")
-
 [node name="Head" type="Sprite2D" parent="."]
 z_index = 3
 scale = Vector2(6.667, 6.667)
@@ -55,10 +46,6 @@ scale = Vector2(0.14999248, 0.14999248)
 stream = ExtResource("4_6c1wy")
 volume_db = 20.0
 pitch_scale = 2.0
-
-[node name="laser" type="AudioStreamPlayer2D" parent="Head"]
-scale = Vector2(0.1499925, 0.1499925)
-stream = ExtResource("6_nayyn")
 
 [node name="Body" type="AnimatedSprite2D" parent="."]
 z_index = 2

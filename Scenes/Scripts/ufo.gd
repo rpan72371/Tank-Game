@@ -25,8 +25,9 @@ func _process(delta):
 		vert = -350*sin(uptime*2.5) * GameState.grv/GameState.initial_velocity
 
 func _on_hitbox_entered(body):
-	if body.is_in_group("bullet") && !hit:
-		body.queue_free()      # destroy the bullet
+	if (body.is_in_group("bullet") || GameState.shield_active) && !hit:
+		if body.is_in_group("bullet"):
+			body.queue_free()      
 		hit = true
 		$ufohead.visible = false
 		$ufobody.visible = false

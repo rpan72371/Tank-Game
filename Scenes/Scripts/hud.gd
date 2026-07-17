@@ -22,4 +22,6 @@ func _process(delta):
 			$powerup.texture = laser
 		_: 
 			$powerup.texture = null
-		
+	if GameState.held_powerup != null:
+		$powerup.scale = Vector2(0.8, 0.8)
+	

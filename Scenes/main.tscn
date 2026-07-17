@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://i67eu8chqgq8"]
+[gd_scene load_steps=11 format=3 uid="uid://i67eu8chqgq8"]
 
 [ext_resource type="PackedScene" uid="uid://caa1vegq55ukh" path="res://Scenes/road.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://b871t37kmnymb" path="res://Scenes/Scripts/main.gd" id="1_kry3j"]
@@ -7,11 +7,12 @@
 [ext_resource type="AudioStream" uid="uid://mkeb36ul3gd3" path="res://Audio/retroarcade - Moodmode.wav" id="5_344ge"]
 [ext_resource type="Script" uid="uid://ibj5mit4cbrf" path="res://Scenes/Scripts/hud.gd" id="6_6bp64"]
 [ext_resource type="Texture2D" uid="uid://bm7effibn8mf5" path="res://textures/life.png" id="6_21xkr"]
+[ext_resource type="AudioStream" uid="uid://cmcg61u2tc73v" path="res://Audio/start.mp3" id="6_ynf5e"]
 [ext_resource type="FontFile" uid="uid://bivtx638tkxvw" path="res://textures/Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/connection_ii/ConnectionII.otf" id="7_344ge"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ynf5e"]
 font = ExtResource("7_344ge")
-font_size = 33
+font_size = 35
 shadow_size = 0
 shadow_color = Color(1, 1, 1, 0)
 
@@ -35,23 +36,28 @@ position = Vector2(171.42871, -525.7143)
 stream = ExtResource("5_344ge")
 autoplay = true
 
+[node name="start" type="AudioStreamPlayer2D" parent="CameraFollower"]
+position = Vector2(-586, 21)
+stream = ExtResource("6_ynf5e")
+volume_db = 5.0
+
 [node name="HUD" type="CanvasLayer" parent="."]
 scale = Vector2(1.4, 1.4)
 transform = Transform2D(1.4, 0, 0, 1.4, 0, 0)
 script = ExtResource("6_6bp64")
 
 [node name="Score" type="Label" parent="HUD"]
-offset_left = 1131.4287
-offset_top = 14.285713
-offset_right = 1413.4286
-offset_bottom = 86.28571
+offset_left = 1117.1432
+offset_top = 28.571438
+offset_right = 1399.1431
+offset_bottom = 100.57144
 label_settings = SubResource("LabelSettings_ynf5e")
 
 [node name="HealthContainer" type="HBoxContainer" parent="HUD"]
-offset_left = 10.800001
-offset_top = 9.200001
-offset_right = 208.8
-offset_bottom = 60.2
+offset_left = 37.942856
+offset_top = 24.200006
+offset_right = 235.94286
+offset_bottom = 75.20001
 
 [node name="Heart1" type="TextureRect" parent="HUD/HealthContainer"]
 layout_mode = 2
@@ -69,7 +75,8 @@ texture = ExtResource("6_21xkr")
 expand_mode = 3
 
 [node name="powerup" type="TextureRect" parent="HUD"]
-offset_left = 294.0
-offset_top = 16.0
-offset_right = 365.0
-offset_bottom = 85.0
+offset_left = 215.71426
+offset_top = 22.142868
+offset_right = 284.5714
+offset_bottom = 88.57144
+expand_mode = 1

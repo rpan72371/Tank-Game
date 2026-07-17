@@ -11,3 +11,5 @@ func _on_body_entered(body):
 		GameState.take_damage()
 		visible = false
 		hit = true 
+		if GameState.shield_active:
+			$hit.play()

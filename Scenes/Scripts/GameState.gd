@@ -20,8 +20,13 @@ var iframe = false
 var shield_active = false
 var lasers_active = false
 
+var active_shield: Shields = null
+var active_lasers: Lasers = null
+
 var shield_pickup = false
 var lasers_pickup = false
+
+var shield_blinking = false
 
 func _ready():
 	load_data()
@@ -81,9 +86,16 @@ func use_powerup(holder: Node) -> void:
 	if held_powerup == null:
 		return
 
-	var powerup_script = load(held_powerup)
-	var powerup_instance = powerup_script.new()
-	holder.add_child(powerup_instance)
-	powerup_instance.activate()
+	if held_powerup == shields_powerup:
+		if active_shield == null:
+			active_shield = Shields.new()
+			holder.add_child(active_shield)
+		active_shield.activate()  # reuses the same timer, restarts it
+
+	elif held_powerup == lasers_powerup:
+		if active_lasers == null:
+			active_lasers = Lasers.new()
+			holder.add_child(active_lasers)
+		active_lasers.activate()
 
 	held_powerup = null

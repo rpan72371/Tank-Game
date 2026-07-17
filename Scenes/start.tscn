@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0a1ijdw5us6h"]
+[gd_scene load_steps=9 format=3 uid="uid://c0a1ijdw5us6h"]
 
 [ext_resource type="Script" uid="uid://dpdsrnfpiglmc" path="res://Scenes/Scripts/start.gd" id="1_r48yj"]
 [ext_resource type="Texture2D" uid="uid://ck5v8ja4hc4he" path="res://textures/button.png" id="2_r48yj"]
 [ext_resource type="FontFile" uid="uid://bivtx638tkxvw" path="res://textures/Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/connection_ii/ConnectionII.otf" id="3_5ogh5"]
 [ext_resource type="AudioStream" uid="uid://b6e82u7yla383" path="res://Audio/fail.mp3" id="4_lb6bl"]
-[ext_resource type="AudioStream" uid="uid://cmcg61u2tc73v" path="res://Audio/start.mp3" id="5_rk01k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r48yj"]
 size = Vector2(94, 42)
@@ -62,6 +61,3 @@ label_settings = SubResource("LabelSettings_rk01k")
 [node name="fail" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_lb6bl")
 volume_db = -3.0
-
-[node name="start" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_rk01k")

@@ -127,6 +127,7 @@ func reset_game():
 	$CameraFollower.global_position = camera_start
 	scroll_x = 0.0
 	time_since_obs = 0.0
+	$CameraFollower.play_start()
 	
 	for obs in obstacles:
 		if is_instance_valid(obs):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://i67eu8chqgq8"]
+[gd_scene load_steps=15 format=3 uid="uid://i67eu8chqgq8"]
 
 [ext_resource type="PackedScene" uid="uid://caa1vegq55ukh" path="res://Scenes/road.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://b871t37kmnymb" path="res://Scenes/Scripts/main.gd" id="1_kry3j"]
@@ -9,12 +9,22 @@
 [ext_resource type="Texture2D" uid="uid://bm7effibn8mf5" path="res://textures/life.png" id="6_21xkr"]
 [ext_resource type="AudioStream" uid="uid://cmcg61u2tc73v" path="res://Audio/start.mp3" id="6_ynf5e"]
 [ext_resource type="FontFile" uid="uid://bivtx638tkxvw" path="res://textures/Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/connection_ii/ConnectionII.otf" id="7_344ge"]
+[ext_resource type="Script" uid="uid://cy5ruhdksntnf" path="res://Scenes/Scripts/crt.gd" id="10_d1ilt"]
+[ext_resource type="Shader" uid="uid://dloim6w8e6scf" path="res://shaders/crt1.gdshader" id="10_hptm8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ynf5e"]
 font = ExtResource("7_344ge")
 font_size = 35
 shadow_size = 0
 shadow_color = Color(1, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1ilt"]
+shader = ExtResource("10_hptm8")
+shader_parameter/curvature = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_6iyac"]
+size = Vector2(1920, 1080)
+center_offset = Vector3(960, 540, 0)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_kry3j")
@@ -80,3 +90,10 @@ offset_top = 22.142868
 offset_right = 284.5714
 offset_bottom = 88.57144
 expand_mode = 1
+
+[node name="CRT" type="CanvasLayer" parent="."]
+script = ExtResource("10_d1ilt")
+
+[node name="crt1" type="MeshInstance2D" parent="CRT"]
+material = SubResource("ShaderMaterial_d1ilt")
+mesh = SubResource("QuadMesh_6iyac")

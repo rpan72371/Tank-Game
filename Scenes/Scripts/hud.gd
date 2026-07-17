@@ -2,12 +2,11 @@ extends CanvasLayer
 
 @onready var hearts = [$HealthContainer/Heart1, $HealthContainer/Heart2, $HealthContainer/Heart3]
 @onready var score_label = $Score
-@onready var highscore_label = $Highscore
 
 const shield = preload("res://textures/shields.png")
 const laser = preload("res://textures/lasers.png")
 
-func _process(delta):
+func _process(_delta):
 	# hearts: show one per remaining HP
 	for i in hearts.size():
 		hearts[i].visible = i < GameState.hp

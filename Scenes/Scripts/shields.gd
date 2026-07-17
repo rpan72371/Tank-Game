@@ -11,7 +11,7 @@ func activate():
 		timer.one_shot = true
 		timer.timeout.connect(func(): GameState.shield_active = false)
 		add_child(timer)
-	timer.start(4)
+	timer.start(5)
 
 func _process(_delta):
 	if timer == null:

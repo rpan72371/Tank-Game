@@ -15,7 +15,7 @@ func _ready():
 	global_rotation=rota
 	get_tree().create_timer(1.5).timeout.connect(queue_free)
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity=Vector2(speed,0).rotated(dir)
 	move_and_slide()
 	

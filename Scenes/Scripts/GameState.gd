@@ -28,10 +28,13 @@ var lasers_pickup = false
 
 var shield_blinking = false
 
+var crt_visible = false
+var crt_curved = true 
+
 func _ready():
 	load_data()
 
-func _process(delta):
+func _process(_delta):
 	if hp <= 0:
 		is_alive = false
 	if is_alive:
@@ -65,14 +68,18 @@ func end_run():
 		save_data()
 
 func take_damage():
-	if !shield_active:
+	if !shield_active && is_alive:
 		iframe = true
 		hp -= 1
 		get_tree().create_timer(global_iframes).timeout.connect(func(): iframe = false)
 	
 func save_data():
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	file.store_var({ "high_score": high_score })
+	file.store_var({
+		"high_score": high_score,
+		"crt_visible": crt_visible,
+		"crt_curved": crt_curved,
+	})
 	file.close()
 
 func load_data():
@@ -80,6 +87,8 @@ func load_data():
 		var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 		var data = file.get_var()
 		high_score = data.get("high_score", 0)
+		crt_visible = data.get("crt_visible", false)
+		crt_curved = data.get("crt_curved", true)
 		file.close()
 
 func use_powerup(holder: Node) -> void:

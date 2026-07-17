@@ -29,7 +29,6 @@ autoplay = true
 
 [node name="hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_7sw17")
-volume_db = 3.0
 
 [node name="scream" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_4f320")

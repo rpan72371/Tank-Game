@@ -41,4 +41,3 @@ stream = ExtResource("5_sh37k")
 
 [node name="hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_rv3de")
-volume_db = 3.0

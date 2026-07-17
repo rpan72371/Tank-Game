@@ -53,7 +53,7 @@ position = Vector2(17.39913, 0)
 [node name="gun" type="AudioStreamPlayer2D" parent="Head"]
 scale = Vector2(0.14999248, 0.14999248)
 stream = ExtResource("4_6c1wy")
-volume_db = 20.0
+volume_db = 15.0
 pitch_scale = 2.0
 
 [node name="laser" type="AudioStreamPlayer2D" parent="Head"]

@@ -11,7 +11,7 @@ func _ready():
 	z_index = 10
 	$shipnoise.play()
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity.x = GameState.grv * 1.75
 	velocity.y = vert
 	move_and_slide()

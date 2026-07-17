@@ -143,8 +143,18 @@ func reset_game():
 	GameState.hp = 3
 	GameState.is_alive = true
 	GameState.can_score = false
+	GameState.held_powerup = null
+	GameState.lasers_active = false
+	GameState.shield_active = false
+	
 	reset_pending = false
 	
+func _input(event):
+	if event.is_action_pressed("f11"):
+		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	
 
 	

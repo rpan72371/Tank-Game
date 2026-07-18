@@ -14,6 +14,12 @@ func ready():
 		$fail.play()
 		$Label2.text = "Restart"
 	$Label3.text = "HIGHSCORE:%06d" % GameState.high_score
+	
+func _process(_delta):
+	if GameState.vertical_display:
+		self.rotation = deg_to_rad(90)
+	else: 
+		self.rotation = deg_to_rad(0)
 
 func _on_body_entered(body):
 	if body.is_in_group("bullet") && !hit:

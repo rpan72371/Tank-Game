@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://i67eu8chqgq8"]
+[gd_scene load_steps=16 format=3 uid="uid://i67eu8chqgq8"]
 
 [ext_resource type="PackedScene" uid="uid://caa1vegq55ukh" path="res://Scenes/road.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://b871t37kmnymb" path="res://Scenes/Scripts/main.gd" id="1_kry3j"]
@@ -9,8 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bm7effibn8mf5" path="res://textures/life.png" id="6_21xkr"]
 [ext_resource type="AudioStream" uid="uid://cmcg61u2tc73v" path="res://Audio/start.mp3" id="6_ynf5e"]
 [ext_resource type="FontFile" uid="uid://bivtx638tkxvw" path="res://textures/Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/connection_ii/ConnectionII.otf" id="7_344ge"]
+[ext_resource type="Script" uid="uid://bchv8lt0p2m7m" path="res://Scenes/Scripts/hud_vertical.gd" id="10_6iyac"]
 [ext_resource type="Script" uid="uid://cy5ruhdksntnf" path="res://Scenes/Scripts/crt.gd" id="10_d1ilt"]
-[ext_resource type="Shader" uid="uid://dloim6w8e6scf" path="res://shaders/crt1.gdshader" id="10_hptm8"]
+[ext_resource type="Shader" uid="uid://dloim6w8e6scf" path="res://shaders/crt1_horizontal.gdshader" id="10_hptm8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ynf5e"]
 font = ExtResource("7_344ge")
@@ -51,47 +52,90 @@ position = Vector2(-586, 21)
 stream = ExtResource("6_ynf5e")
 volume_db = 5.0
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="AudioListener2D" type="AudioListener2D" parent="CameraFollower"]
+
+[node name="HUD_horizontal" type="CanvasLayer" parent="."]
 scale = Vector2(1.4, 1.4)
 transform = Transform2D(1.4, 0, 0, 1.4, 0, 0)
 script = ExtResource("6_6bp64")
 
-[node name="Score" type="Label" parent="HUD"]
+[node name="Score" type="Label" parent="HUD_horizontal"]
 offset_left = 1117.1432
 offset_top = 28.571438
 offset_right = 1399.1431
 offset_bottom = 100.57144
 label_settings = SubResource("LabelSettings_ynf5e")
 
-[node name="HealthContainer" type="HBoxContainer" parent="HUD"]
+[node name="HealthContainer" type="HBoxContainer" parent="HUD_horizontal"]
 offset_left = 37.942856
 offset_top = 24.200006
 offset_right = 235.94286
 offset_bottom = 75.20001
 
-[node name="Heart1" type="TextureRect" parent="HUD/HealthContainer"]
+[node name="Heart1" type="TextureRect" parent="HUD_horizontal/HealthContainer"]
 layout_mode = 2
 texture = ExtResource("6_21xkr")
 expand_mode = 3
 
-[node name="Heart2" type="TextureRect" parent="HUD/HealthContainer"]
+[node name="Heart2" type="TextureRect" parent="HUD_horizontal/HealthContainer"]
 layout_mode = 2
 texture = ExtResource("6_21xkr")
 expand_mode = 3
 
-[node name="Heart3" type="TextureRect" parent="HUD/HealthContainer"]
+[node name="Heart3" type="TextureRect" parent="HUD_horizontal/HealthContainer"]
 layout_mode = 2
 texture = ExtResource("6_21xkr")
 expand_mode = 3
 
-[node name="powerup" type="TextureRect" parent="HUD"]
+[node name="powerup" type="TextureRect" parent="HUD_horizontal"]
 offset_left = 215.71426
 offset_top = 22.142868
 offset_right = 284.5714
 offset_bottom = 88.57144
 expand_mode = 1
 
+[node name="HUD_vertical" type="CanvasLayer" parent="."]
+scale = Vector2(1.4, 1.4)
+transform = Transform2D(1.4, 0, 0, 1.4, 0, 0)
+script = ExtResource("10_6iyac")
+
+[node name="Score" type="Label" parent="HUD_vertical"]
+offset_left = 1337.857
+offset_top = 507.85715
+offset_right = 1619.8569
+offset_bottom = 579.85706
+label_settings = SubResource("LabelSettings_ynf5e")
+
+[node name="HealthContainer" type="HBoxContainer" parent="HUD_vertical"]
+offset_left = 1347.8572
+offset_top = 27.142859
+offset_right = 1545.8572
+offset_bottom = 78.14287
+
+[node name="Heart1" type="TextureRect" parent="HUD_vertical/HealthContainer"]
+layout_mode = 2
+texture = ExtResource("6_21xkr")
+expand_mode = 3
+
+[node name="Heart2" type="TextureRect" parent="HUD_vertical/HealthContainer"]
+layout_mode = 2
+texture = ExtResource("6_21xkr")
+expand_mode = 3
+
+[node name="Heart3" type="TextureRect" parent="HUD_vertical/HealthContainer"]
+layout_mode = 2
+texture = ExtResource("6_21xkr")
+expand_mode = 3
+
+[node name="powerup" type="TextureRect" parent="HUD_vertical"]
+offset_left = 1354.2861
+offset_top = 199.28568
+offset_right = 1423.1433
+offset_bottom = 265.7142
+expand_mode = 1
+
 [node name="CRT" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("10_d1ilt")
 
 [node name="crt1" type="MeshInstance2D" parent="CRT"]

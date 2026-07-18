@@ -33,6 +33,8 @@ var crt_curved = true
 
 var free_move = false
 
+var vertical_display = false
+
 func _ready():
 	load_data()
 
@@ -82,6 +84,7 @@ func save_data():
 		"crt_visible": crt_visible,
 		"crt_curved": crt_curved,
 		"free_move": free_move,
+		"vertical_display": vertical_display,
 	})
 	file.close()
 
@@ -93,6 +96,7 @@ func load_data():
 		crt_visible = data.get("crt_visible", false)
 		crt_curved = data.get("crt_curved", true)
 		free_move = data.get("free_move", false)
+		vertical_display = data.get("vertical_display", false)
 		file.close()
 
 func use_powerup(holder: Node) -> void:

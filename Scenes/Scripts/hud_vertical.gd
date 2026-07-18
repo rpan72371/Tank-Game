@@ -5,6 +5,11 @@ extends CanvasLayer
 
 const shield = preload("res://textures/shields.png")
 const laser = preload("res://textures/lasers.png")
+
+func _ready() -> void:
+	$HealthContainer.rotation = deg_to_rad(90)
+	$Score.rotation = deg_to_rad(90)
+	$powerup.rotation = deg_to_rad(90)
 	
 func _process(_delta):
 	#Show hp, max 3 
@@ -23,8 +28,8 @@ func _process(_delta):
 			$powerup.texture = null
 	if GameState.held_powerup != null:
 		$powerup.scale = Vector2(0.8, 0.8)
-
-	if !GameState.vertical_display:
+	
+	if GameState.vertical_display:
 		visible = true
 	else:
 		visible = false

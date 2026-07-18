@@ -15,7 +15,11 @@ func _ready():
 	$powerup.area_entered.connect(_on_powerup_collected)
 	$crate.rotation = rot
 	$CollisionShape2D.rotation = rot
-	
+
+func _process(_delta):
+	if GameState.vertical_display:
+		$powerup.rotation = deg_to_rad(90)
+
 func _on_body_entered(body):
 	if body.is_in_group("player") && !hit && !GameState.iframe:
 		GameState.take_damage()

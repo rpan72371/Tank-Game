@@ -31,6 +31,8 @@ var shield_blinking = false
 var crt_visible = false
 var crt_curved = true 
 
+var free_move = false
+
 func _ready():
 	load_data()
 
@@ -79,6 +81,7 @@ func save_data():
 		"high_score": high_score,
 		"crt_visible": crt_visible,
 		"crt_curved": crt_curved,
+		"free_move": free_move,
 	})
 	file.close()
 
@@ -89,6 +92,7 @@ func load_data():
 		high_score = data.get("high_score", 0)
 		crt_visible = data.get("crt_visible", false)
 		crt_curved = data.get("crt_curved", true)
+		free_move = data.get("free_move", false)
 		file.close()
 
 func use_powerup(holder: Node) -> void:

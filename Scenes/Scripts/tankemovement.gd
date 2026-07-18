@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const BODY_ROTATION = 20
-const SIDESPEED = 500.0
+var AXIAL_SPEED = 500.0
 var min_y = 162.0
 var max_y = 864.0
 var alive_status = false
@@ -70,14 +70,25 @@ func _physics_process(delta: float) -> void:
 		$Body.rotation = deg_to_rad(0)
 		dir_y = 0.0
 
-	# horizontal autoscroll through move_and_slide; keep y out of it
-	velocity.x = GameState.grv
+	# horizontal: autoscroll + player forward/back nudge
+	var dir_x = 0.0
+	if GameState.is_alive && GameState.free_move:
+		AXIAL_SPEED = 275
+		if Input.is_action_pressed("d"):
+			dir_x = 1.0
+		elif Input.is_action_pressed("a"):
+			dir_x = -(AXIAL_SPEED+GameState.initial_velocity)/AXIAL_SPEED
+	else:
+		AXIAL_SPEED = 500
+	
+	velocity.x = GameState.grv + dir_x * AXIAL_SPEED
 	velocity.y = 0
 	move_and_slide()
 
-	# vertical: clamp the TARGET before assigning, so it can never overshoot
-	position.y = clamp(position.y + dir_y * SIDESPEED * delta, min_y, max_y)
-
+	position.y = clamp(position.y + dir_y * AXIAL_SPEED * delta, min_y, max_y)
+	var cam_x = get_viewport().get_camera_2d().global_position.x
+	position.x = clamp(position.x, cam_x - 920, cam_x + 920)
+	
 func die():
 	GameState.end_run()
 	GameState.save_data()

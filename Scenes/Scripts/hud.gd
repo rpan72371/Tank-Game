@@ -7,13 +7,13 @@ const shield = preload("res://textures/shields.png")
 const laser = preload("res://textures/lasers.png")
 
 func _process(_delta):
-	# hearts: show one per remaining HP
+	#Show hp, max 3 
 	for i in hearts.size():
 		hearts[i].visible = i < GameState.hp
 
-	# score: arcade-style zero-padded
 	score_label.text = "SCORE:%06d" % GameState.score
-
+	
+	#display powerup if held
 	match GameState.held_powerup:
 		GameState.shields_powerup:
 			$powerup.texture = shield

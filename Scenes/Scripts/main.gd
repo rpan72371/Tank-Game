@@ -156,5 +156,7 @@ func _input(event):
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	
+	if event.is_action_pressed("f10"):
+		GameState.free_move = !GameState.free_move
 
 	

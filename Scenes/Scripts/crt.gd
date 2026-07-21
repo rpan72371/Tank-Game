@@ -22,8 +22,8 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("shift_f12"):
 		curved = !curved
-		GameState.crt_curved = curved      # update
-		GameState.save_data()              # persist
+		GameState.crt_curved = curved      
+		GameState.save_data()              
 		_apply()
 	elif event.is_action_pressed("alt_f12"):
 		GameState.vertical_display = !GameState.vertical_display

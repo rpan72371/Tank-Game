@@ -1,13 +1,17 @@
 extends CharacterBody2D
 
 const BODY_ROTATION = 20
-var AXIAL_SPEED = 500.0
-var min_y = 162.0
-var max_y = 864.0
+const MIN_Y = 162.0
+const MAX_Y = 864.0
+
+#Tracks last hp to track decrease in hp
+var last_health = 0 
 var alive_status = false
-var last_health = 0
+
+#Powerup specific flags
 var tank_blinking = false
 var bubble_blinking = false
+var axial_speed = 500.0
 
 func _ready():
 	$pickup.add_to_group("pickup")
@@ -70,23 +74,23 @@ func _physics_process(delta: float) -> void:
 		$Body.rotation = deg_to_rad(0)
 		dir_y = 0.0
 
-	# horizontal: autoscroll + player forward/back nudge
+	# Enable left and right motion during free_move active
 	var dir_x = 0.0
 	if GameState.is_alive && GameState.free_move:
-		AXIAL_SPEED = 275
+		axial_speed = 275
 		if Input.is_action_pressed("d"):
 			dir_x = 1.0
 		elif Input.is_action_pressed("a"):
-			dir_x = -(AXIAL_SPEED+GameState.initial_velocity)/AXIAL_SPEED
+			dir_x = -(axial_speed+GameState.initial_velocity)/axial_speed
 	else:
-		AXIAL_SPEED = 500
+		axial_speed = 500
 	
-	velocity.x = GameState.grv + dir_x * AXIAL_SPEED
+	velocity.x = GameState.grv + dir_x * axial_speed
 	velocity.y = 0
 	move_and_slide()
-
-	position.y = clamp(position.y + dir_y * AXIAL_SPEED * delta, min_y, max_y)
+	
 	var cam_x = get_viewport().get_camera_2d().global_position.x
+	position.y = clamp(position.y + dir_y * axial_speed * delta, MIN_Y, MAX_Y)
 	position.x = clamp(position.x, cam_x - 920, cam_x + 920)
 	
 func die():

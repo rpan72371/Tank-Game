@@ -12,7 +12,7 @@ func _ready():
 	$shipnoise.play()
 	
 func _physics_process(_delta):
-	velocity.x = GameState.grv * 1.75
+	velocity.x = GameState.grv * 1.5
 	velocity.y = vert
 	move_and_slide()
 

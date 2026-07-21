@@ -1,49 +1,46 @@
 extends Node
-const initial_velocity = 300
+
+#Game variables
+const initial_velocity = 350
+const global_iframes = 0.75
+var grv = 0
+var hp = 3
+var first_game = true
+var is_alive = false
+var can_score = false
+var iframe = false
+var score = 0
+var high_score = 0
+var reset = false
+var acceleration = 0.0
+
 const SAVE_PATH = "user://savedata.save"
 
+#Powerup variables
 const shields_powerup = "res://Scenes/Scripts/shields.gd"
 const lasers_powerup = "res://Scenes/Scripts/lasers.gd"
 var held_powerup = null
-
-var grv = 0
-var first_game = true
-var is_alive = false
-var reset = false
-var global_iframes = 0.75
-var hp = 3
-var score = 0
-var high_score = 0
-var can_score = false
-var iframe = false
-
 var shield_active = false
 var lasers_active = false
-
 var active_shield: Shields = null
 var active_lasers: Lasers = null
-
 var shield_pickup = false
 var lasers_pickup = false
-
 var shield_blinking = false
 
+#Toggle specific variables
 var crt_visible = false
 var crt_curved = true 
-
 var free_move = false
-
 var vertical_display = false
 
 func _ready():
 	load_data()
 
-func _process(_delta):
+func _process(delta):
+	acceleration += delta
 	if hp <= 0:
 		is_alive = false
-	if is_alive:
-		grv = initial_velocity
-	else:
 		grv = 0
 	
 	if can_score and is_alive:
@@ -75,8 +72,27 @@ func take_damage():
 	if !shield_active && is_alive:
 		iframe = true
 		hp -= 1
+		acceleration = 0
 		get_tree().create_timer(global_iframes).timeout.connect(func(): iframe = false)
-	
+
+func use_powerup(holder: Node) -> void:
+	if held_powerup == null:
+		return
+
+	if held_powerup == shields_powerup:
+		if active_shield == null:
+			active_shield = Shields.new()
+			holder.add_child(active_shield)
+		active_shield.activate()  #Reuses the same timer, restarts it
+
+	elif held_powerup == lasers_powerup:
+		if active_lasers == null:
+			active_lasers = Lasers.new()
+			holder.add_child(active_lasers)
+		active_lasers.activate() #Reuses the same timer, restarts it
+
+	held_powerup = null
+
 func save_data():
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_var({
@@ -98,21 +114,3 @@ func load_data():
 		free_move = data.get("free_move", false)
 		vertical_display = data.get("vertical_display", false)
 		file.close()
-
-func use_powerup(holder: Node) -> void:
-	if held_powerup == null:
-		return
-
-	if held_powerup == shields_powerup:
-		if active_shield == null:
-			active_shield = Shields.new()
-			holder.add_child(active_shield)
-		active_shield.activate()  # reuses the same timer, restarts it
-
-	elif held_powerup == lasers_powerup:
-		if active_lasers == null:
-			active_lasers = Lasers.new()
-			holder.add_child(active_lasers)
-		active_lasers.activate()
-
-	held_powerup = null

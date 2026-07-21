@@ -4,7 +4,9 @@ var hit = false
 
 func _ready():
 	body_entered.connect(_on_body_entered)
-	get_tree().create_timer(0.1).timeout.connect(ready)
+	
+	#slight delay to allow save data to load properly 
+	get_tree().create_timer(0.1).timeout.connect(ready) 
 
 func ready():
 	if GameState.first_game:

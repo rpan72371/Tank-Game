@@ -19,7 +19,7 @@ var min_y = 216.0           # top of play area
 var max_y = 864.0          # bottom of play area
 var spawn_x = 1970.0       # where rocks first appear (off right edge)
 
-var frame_counter = 0
+var clear_offscreen = true
 var time_since_obs = 0.0
 var time_since_enemy = 0.0
 var next_obs = 1.5
@@ -33,11 +33,11 @@ func _ready():
 	
 func _process(delta):
 	if GameState.is_alive: 
-		scroll_x += GameState.initial_velocity * delta
-		var rng = randi_range(1, 10)
+		scroll_x += GameState.grv * delta
 		time_since_obs += delta 
 		time_since_enemy += delta
 		if time_since_obs >= next_obs:# obstacle spawning logic
+			var rng = randi_range(1, 10)
 			time_since_obs = 0.0
 			if scroll_x <= 25000:
 				next_obs = obs_interval - floor(scroll_x/5000)/5
@@ -49,12 +49,17 @@ func _process(delta):
 				generate_obs(false) 
 		if time_since_enemy >= next_enemy:
 			time_since_enemy = 0.0
+			var rng = randi_range(1, 10)
 			if scroll_x <= 30000:
 				next_enemy = enemy_interval - floor(scroll_x/5000)/5
 			if rng > 8:
 				generate_enemy()
+		if clear_offscreen:
+			clear_offscreen = false
+			check_offscreen()
+			get_tree().create_timer(3).timeout.connect(func(): clear_offscreen = true)
 
-	if not GameState.is_alive and not reset_pending: # trigger reset flag
+	if !GameState.is_alive and !reset_pending: # trigger reset flag
 		reset_pending = true
 		var start = start_button.instantiate()	
 		start.global_position = $CameraFollower.position
@@ -63,12 +68,6 @@ func _process(delta):
 	if GameState.reset: # reset game
 		GameState.reset = false
 		reset_game()
-
-	if frame_counter % 500 != 0:
-		return          
-	else:
-		frame_counter = 0
-		check_offscreen()
 
 func check_offscreen():
 	while true:
@@ -146,7 +145,7 @@ func reset_game():
 	GameState.held_powerup = null
 	GameState.lasers_active = false
 	GameState.shield_active = false
-	
+	GameState.grv = GameState.initial_velocity
 	reset_pending = false
 	
 func _input(event):

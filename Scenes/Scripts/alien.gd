@@ -1,11 +1,11 @@
 extends Area2D
 
-const FIRERATE = 1.3
+const FIRERATE = 1.3 #Alien blaster firing period
 
 var can_fire = true
 var hit = false
-var laser_scene = preload("res://Scenes/laser.tscn")
-var rng = randi_range(1,8)
+var laser_scene = preload("res://Scenes/laser.tscn") #Projectile
+var rng = randi_range(1,8)#RNG value for easter egg
 
 func _ready():
 	body_entered.connect(_on_body_entered)
@@ -21,8 +21,8 @@ func _on_body_entered(body):
 		hit = true 
 		GameState.score += 200
 		$hit.play()
-		if rng == 2:
-			$scream.play()
+		if rng == 1:
+			$scream.play() #1/8 chance to play wilhelm scream if run over 
 
 func _on_shot(body):
 	if body.is_in_group("bullet") && !hit:

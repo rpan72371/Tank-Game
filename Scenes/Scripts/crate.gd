@@ -1,6 +1,8 @@
 extends Area2D
 
 var hit = false
+
+#Powerup specific flags
 var diamond = false
 var heart = false
 var shields = false
@@ -9,9 +11,11 @@ var collected = false
 var powerup = false
 
 func _ready():
-	var rot = deg_to_rad(randi_range(0,360))
 	body_entered.connect(_on_body_entered)
 	body_entered.connect(_on_shot)
+	
+	#Generate random crate rotation 
+	var rot = deg_to_rad(randi_range(0,360))
 	$powerup.area_entered.connect(_on_powerup_collected)
 	$crate.rotation = rot
 	$CollisionShape2D.rotation = rot
@@ -30,9 +34,9 @@ func _on_body_entered(body):
 func _on_shot(body):
 	if ((body.is_in_group("bullet")) || (body.is_in_group("player") && GameState.shield_active)) && !hit:
 		$crate.visible = false
-		if randi_range(1,25) >= 24:
+		if randi_range(1,25) >= 24: #2/25 chance to drop powerup
 			powerup = true
-			match randi_range(1,4):
+			match randi_range(1,4):	 #Random powerup
 				1:	
 					$powerup.use_powerup(1)
 					diamond = true
@@ -49,7 +53,7 @@ func _on_shot(body):
 		hit = true
 		GameState.score += 10
 		if body.is_in_group("bullet"):
-			body.queue_free()
+			body.queue_free() #kill bullet on hit
 
 func _on_powerup_collected(body):
 	if body.is_in_group("pickup") && hit && !collected && powerup:
@@ -57,7 +61,7 @@ func _on_powerup_collected(body):
 			GameState.score += 1500
 		elif heart:
 			if GameState.hp == 3:
-				GameState.score += 500
+				GameState.score += 500 #Give more hp if full hp
 			else: 
 				GameState.score += 200
 				GameState.hp += 1
